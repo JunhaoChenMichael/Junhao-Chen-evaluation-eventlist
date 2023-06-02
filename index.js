@@ -10,7 +10,7 @@ const EventAPI = (function API() {
     const res = await fetch(`${API_URL}`, {
       method: "POST",
       headers: {
-        "content-type": "application/json; charset=utf8"
+        "content-type": "application/json; charset=utf-8"
       },
       body: JSON.stringify(newEvent)
     });
@@ -53,13 +53,6 @@ const EventAPI = (function API() {
     patchEvent
   };
 })();
-
-const newEvent = {
-  eventName: "Test Festival2",
-  startDate: "2023-01-31",
-  endDate: "2023-03-21"
-};
-
 
 class EventModel {
   #events = [];
@@ -104,6 +97,13 @@ class EventView {
   }
 
   appendEvent(event) {
+    const eventElem = this.createEventElem(event);
+    this.eventlist.append(eventElem);
+  }
+
+  refreshNewEvent(event){
+    const element = document.getElementById(`event-new`);
+    element.remove();
     const eventElem = this.createEventElem(event);
     this.eventlist.append(eventElem);
   }
@@ -247,14 +247,24 @@ class EventController {
         const saveId = e.target.getAttribute("save-id");
         const element = document.getElementById(`event-${saveId}`);
         var name_input = element.getElementsByClassName("event-name-input")[0].value;
-        var start_date = document.getElementById("new-start").value;
-        var end_date = element.getElementsByClassName("end-date-input")[0].value;
-        console.log(name_input, start_date, end_date);
+        var start_date = document.getElementById("new-start").value.toString();
+        var end_date = document.getElementById("new-start").value.toString();
+        if (name_input == "" || start_date == "" || end_date == ""){
+          alert("Please enter all the input!");
+        } else{
+          const new_event = {
+            "eventName":name_input,
+            "startDate":start_date,
+            "endDate": end_date}
+          this.model.addEvents(new_event).then((back_event)=>{
+            this.view.refreshNewEvent(back_event);
+            console.log(back_event);}
+          );
 
+        }
       }
     });
   }
-
 }
 
 const model = new EventModel();
