@@ -1,0 +1,85 @@
+.event-app__add-btn{
+    margin-left: 50%;
+    background-color: #008bbad1;
+    color: white;
+    width: 120px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+table{
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 20%;
+    border: solid #e6e2d3;
+    text-align: center;
+    border-radius: 5px;
+}
+
+th {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+td:not(.event-td) {
+    width: 10%;
+    padding-top: 5px;
+    background-color: #e6e2d3;
+    border-bottom: 10px solid white;
+    border-top: 2px solid white;
+    /* border-left: none; */
+    border-right: none;    
+}
+
+.event__edit-btn, .event__save-btn{
+    margin-bottom: 4%;
+    margin-right: 1%;
+    width: 35px;
+    height: 35px;
+    background-color: #008cba;
+    border: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.event__delete-btn, .event__discard-btn{
+    margin-bottom: 4%;
+    width: 35px;
+    height: 35px;
+    background-color: #c94c4c;
+    border: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.svg-icon {
+    position: relative;
+    top: .125em;
+    flex-shrink: 0;
+    height: 1.5em;
+    width: 1.5em;
+    fill: currentColor;
+    transition: fill .3s;
+    pointer-events: none;
+}
+
+input{
+    border: none;
+    width: 70%;
+    height: 20px;
+    border-radius: 5px;
+    margin-left: 10%;
+}
+
+button{
+    &:active {
+        top: .08em;
+    }
+}

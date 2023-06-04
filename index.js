@@ -168,18 +168,23 @@ class EventView {
     enddate.classList.add("end-date");
     enddate.textContent = event.endDate;
 
+    const action = document.createElement("td");
+    action.classList.add("action")
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("event__delete-btn");
     deleteBtn.setAttribute("remove-id", event.id);
     deleteBtn.textContent = "delete";
+    deleteBtn.innerHTML = "<svg viewBox=\"0 0 24 24\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z\"></path></svg>";
+
 
     const editBtn = document.createElement("button");
     editBtn.classList.add("event__edit-btn");
     editBtn.setAttribute("edit-id", event.id);
-    editBtn.textContent = "edit";
+    editBtn.innerHTML = "<svg viewBox=\"0 0 24 24\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z\"></path></svg>";
 
-    eventElem.append(eventname, startdate, enddate, editBtn, deleteBtn);
+    action.append(editBtn, deleteBtn)
+    eventElem.append(eventname, startdate, enddate, action);
     return eventElem;
   }
 
@@ -210,17 +215,23 @@ class EventView {
     enddateinput.value = event.endDate;
     enddate.append(enddateinput)
 
-    const editBtn = document.createElement("button");
-    editBtn.classList.add("event__save-btn");
-    editBtn.setAttribute("save-id", `${event.id}`);
-    editBtn.textContent = "save";
+    const action = document.createElement("td");
+    action.classList.add("action");
+
+    const saveBtn = document.createElement("button");
+    saveBtn.classList.add("event__save-btn");
+    saveBtn.setAttribute("save-id", `${event.id}`);
+    saveBtn.textContent = "save";
+    saveBtn.innerHTML = "<svg viewBox=\"0 0 24 24\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M21,20V8.414a1,1,0,0,0-.293-.707L16.293,3.293A1,1,0,0,0,15.586,3H4A1,1,0,0,0,3,4V20a1,1,0,0,0,1,1H20A1,1,0,0,0,21,20ZM9,8h4a1,1,0,0,1,0,2H9A1,1,0,0,1,9,8Zm7,11H8V15a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Z\"></path></svg>";
 
     const discardBtn = document.createElement("button");
     discardBtn.classList.add("event__discard-btn");
     discardBtn.setAttribute("discard-id", `${event.id}`);
     discardBtn.textContent = "discard";
+    discardBtn.innerHTML = "<svg viewBox=\"0 0 32 32\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z\"></path></svg>";
 
-    eventElem.append(eventname, startdate, enddate, editBtn, discardBtn);
+    action.append(saveBtn, discardBtn);
+    eventElem.append(eventname, startdate, enddate, action);
     eventElem.style.display='none';
     return eventElem;
   }
@@ -250,17 +261,25 @@ class EventView {
     enddateinput.setAttribute("id", "end-new")
     enddate.append(enddateinput)
 
-    const editBtn = document.createElement("button");
-    editBtn.classList.add("event__save-btn");
-    editBtn.setAttribute("save-id", "new");
-    editBtn.textContent = "save";
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("event__discard-btn");
-    deleteBtn.setAttribute("discard-id", "new");
-    deleteBtn.textContent = "discard";
+    const action = document.createElement("td");
+    action.classList.add("action");
 
-    eventElem.append(eventname, startdate, enddate, editBtn, deleteBtn);
+    const saveBtn = document.createElement("button");
+    saveBtn.classList.add("event__save-btn");
+    saveBtn.setAttribute("save-id", "new");
+    saveBtn.innerHTML = "<svg viewBox=\"0 0 24 24\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M21,20V8.414a1,1,0,0,0-.293-.707L16.293,3.293A1,1,0,0,0,15.586,3H4A1,1,0,0,0,3,4V20a1,1,0,0,0,1,1H20A1,1,0,0,0,21,20ZM9,8h4a1,1,0,0,1,0,2H9A1,1,0,0,1,9,8Zm7,11H8V15a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Z\"></path></svg>";
+
+    const discardBtn = document.createElement("button");
+    discardBtn.classList.add("event__discard-btn");
+    discardBtn.setAttribute("discard-id", "new");
+    discardBtn.innerHTML = "<svg viewBox=\"0 0 32 32\" role=\"img\" class=\"svg-icon\" focusable=\"false\"><path d=\"M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z\"></path></svg>";
+
+  
+    action.append(saveBtn, discardBtn);
+
+    
+    eventElem.append(eventname, startdate, enddate, action);
     return eventElem;
   }
 }
@@ -315,6 +334,7 @@ class EventController {
       if (isDeleteBtn) {
         const removeId = e.target.getAttribute("discard-id");
         if (removeId == "new"){
+          this.editing = false;
           this.view.removeEditEvent(removeId);
         } else {
           this.view.discardEditEvent(removeId);
