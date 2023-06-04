@@ -1,5 +1,5 @@
 .event-app__add-btn{
-    margin-left: 50%;
+    margin-left: 46%;
     background-color: #008bbad1;
     color: white;
     width: 120px;
@@ -10,12 +10,10 @@
 }
 
 table{
-    width: 70%;
-    margin-top: 2%;
-    margin-left: 20%;
-    border: solid #e6e2d3;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
     text-align: center;
-    border-radius: 5px;
 }
 
 th {
@@ -34,6 +32,13 @@ td:not(.event-td) {
     border-right: none;    
 }
 
+.eventTable{
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 15%;
+    border: solid #e6e2d3;
+    border-radius: 5px;
+}
 .event__edit-btn, .event__save-btn{
     margin-bottom: 4%;
     margin-right: 1%;
@@ -73,13 +78,8 @@ td:not(.event-td) {
 input{
     border: none;
     width: 70%;
-    height: 20px;
+    font-size: 15px;
+    height: 22px;
     border-radius: 5px;
     margin-left: 10%;
-}
-
-button{
-    &:active {
-        top: .08em;
-    }
 }
